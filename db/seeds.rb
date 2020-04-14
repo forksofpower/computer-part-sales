@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 # users
 user = User.create(name: "Patrick", email: "p@gmail.com")
 # User.create(name: "Tsura", email: "t@gmail.com")
@@ -27,5 +28,3 @@ cart.parts << part
 
 cart.user = user
 cart.save
-
-
