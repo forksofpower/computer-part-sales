@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyer_id: 1
+  seller_id: 1
+  cart_id: 1
+  part_id: 1
+
+two:
+  buyer_id: 1
+  seller_id: 1
+  cart_id: 1
+  part_id: 1
