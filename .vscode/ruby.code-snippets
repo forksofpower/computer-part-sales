@@ -1,0 +1,23 @@
+{
+	// Place your computer-part-sales workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"rails-rest-controller": {
+		"prefix": "rails-rest-controller",
+		"body": "class ${1:User}sController < ApplicationController\r\n\tbefore_action :find_${2:user}, except: [:index, :new, :create]\r\n\r\n\tdef index\r\n\t\t@${2:user}s = ${1:User}.all\r\n\tend\r\n\r\n\tdef show\r\n\tend\r\n\r\n\tdef new\r\n\t\t@${2:user} = ${1:User}.new\r\n\tend\r\n\r\n\tdef edit\r\n\tend\r\n\r\n\tdef create\r\n\t\t@${2:user} = ${1:User}.new(${2:user}_params)\r\n\t\tif @${2:user}.save\r\n\t\t  flash[:success] = \"${1:User} successfully created\"\r\n\t\t  redirect_to @${2:user}\r\n\t\telse\r\n\t\t  flash[:error] = \"Something went wrong\"\r\n\t\t  render 'new'\r\n\t\tend\r\n\tend\r\n\r\n\tdef update\r\n\t\tif @${2:user}.update_attributes(${2:user}_params)\r\n\t\t  flash[:success] = \"${1:User} was successfully updated\"\r\n\t\t  redirect_to @${2:user}\r\n\t\telse\r\n\t\t  flash[:error] = \"Something went wrong\"\r\n\t\t  render 'edit'\r\n\t\tend\r\n\tend\r\n\r\n\tdef destroy\r\n\t\tif @${2:user}.destroy\r\n\t\t\tflash[:success] = \"${1:User} was successfully deleted\"\r\n\t\t\tredirect_to @${2:user}s_path\r\n\t\telse\r\n\t\t\tflash[:error] = \"Something went wrong\"\r\n\t\t\tredirect_to @${2:user}s_path\r\n\t\tend\r\n\tend\r\n\r\n\tprivate\r\n\t\tdef ${2:user}_params\r\n\t\t\tparams.require(:${2:user}).permit(${3})\r\n\t\tend\r\n\r\n\t\tdef find_${2:user}\r\n\t\t\t@${2:user} = ${1:User}.find(params[:id])\r\n\t\tend\r\nend",
+		"description": "Restful Controller for Rails"
+	}
+}
