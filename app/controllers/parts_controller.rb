@@ -18,7 +18,7 @@ class PartsController < ApplicationController
     def create
         @part = Part.new(part_params)
         if @part.save
-        #   flash[:success] = "Part successfully created"
+          flash[:success] = "Part successfully created"
           redirect_to @part
         else
           flash[:error] = "Something went wrong"
@@ -28,7 +28,7 @@ class PartsController < ApplicationController
 
     def update
         if @part.update_attributes(part_params)
-        #   flash[:success] = "Part was successfully updated"
+          flash[:success] = "Part was successfully updated"
           redirect_to @part
         else
           flash[:error] = "Something went wrong"
@@ -38,22 +38,20 @@ class PartsController < ApplicationController
 
     def destroy
         if @part.destroy
-            # flash[:success] = "Part was successfully deleted"
-            redirect_to @parts_path
+            flash[:success] = "Part was successfully deleted"
+            redirect_to parts_path
         else
             flash[:error] = "Something went wrong"
-            redirect_to @parts_path
+            redirect_to parts_path
         end
     end
 
     private
-
         def part_params
-            params.require(:part).permit(:name)
+            params.require(:part).permit(:name, :manufacturer, :description, :model, :condition, :category, :price, :available)
         end
 
         def find_part
             @part = Part.find(params[:id])
         end
-
 end

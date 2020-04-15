@@ -8,10 +8,8 @@ part1 = Part.create({
     manufacturer: 'EVGA',
     description: 'Super sick graphics card',
     model: 'ex-097098324',
-    quality: 'fair',
     category: 'graphics card',
-    price: '450.00',
-    available: true
+    user: User.find(1)
 })
 
 cart = Cart.new

@@ -1,0 +1,9 @@
+<h3><%= @part.name %></h3>
+<p><%= @part.manufacturer %></p>
+<p><%= @part.description %></p>
+<p><%= @part.model %></p>
+<p><%= @part.condition.capitalize %></p>
+<p><%= @part.category %></p>
+<p>$<%= @part.price %></p>
+<h5><%= link_to "Edit this item", edit_part_path(@part) %></h5> <!-- Only show if you are an admin? -->
+<h5><%= link_to "Sell this item",  %></h5>

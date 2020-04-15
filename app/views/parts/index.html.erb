@@ -1,0 +1,9 @@
+<h3>All Parts</h3>
+
+<div>
+    <ul>
+    <% @parts.each do |u| %>
+        <li><%= link_to u.name, part_path(u) %></li>
+    <% end %>
+    </ul>
+</div>

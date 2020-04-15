@@ -5,10 +5,9 @@ class CreateParts < ActiveRecord::Migration[6.0]
       t.string :manufacturer
       t.string :description
       t.string :model
-      t.string :quality
+      t.string :condition
       t.string :category
-      t.float :price
-      t.boolean :available
+      t.string :user_id
 
       t.timestamps
     end
