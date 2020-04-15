@@ -34,10 +34,9 @@ ActiveRecord::Schema.define(version: 2020_04_14_213013) do
     t.string "manufacturer"
     t.string "description"
     t.string "model"
-    t.string "quality"
+    t.string "condition"
     t.string "category"
-    t.float "price"
-    t.boolean "available"
+    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
