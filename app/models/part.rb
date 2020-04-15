@@ -1,6 +1,6 @@
 class Part < ApplicationRecord
-    has_many :seller_parts
-    has_many :sellers, through: :seller_parts, source: :user
+    has_many :listings
+    has_many :sellers, through: :listings, source: :user
     belongs_to :user
     has_many :transactions
 

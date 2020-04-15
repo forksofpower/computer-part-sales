@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2020_04_14_213013) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "part_id"
+    t.float "price"
+    t.string "condition"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "parts", force: :cascade do |t|
     t.string "name"
     t.string "manufacturer"
@@ -37,13 +46,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_213013) do
     t.string "condition"
     t.string "category"
     t.string "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "seller_parts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "part_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
