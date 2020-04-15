@@ -2,19 +2,6 @@ class Transaction < ApplicationRecord
     belongs_to :cart
     belongs_to :part
 
-    def seller=(user)
-        self.seller_id = user.id
-    end
-
-    def seller
-        User.find(self.seller_id)
-    end
-
-    def buyer=(user)
-        self.buyer_id = user.id
-    end
-
-    def buyer
-        User.find(self.buyer_id)
-    end
+    belongs_to :seller, class_name: 'User', foreign_key: :seller_id
+    belongs_to :buyer, class_name: 'User', foreign_key: :buyer_id
 end
