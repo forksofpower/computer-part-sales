@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    before_action :find_cart, except: [:index, :new, :create, :show, :checkout]
+    before_action :find_cart, except: [:index, :new, :create, :show, :checkout, :complete]
     before_action :find_listing, only: [:add_listing, :remove_listing]
     skip_before_action :authorized, only: [:add_listing, :remove_listing]
 
@@ -44,8 +44,12 @@ class CartsController < ApplicationController
                 transaction.save
                 # binding.pry
                 
+                redirect_to checkout_complete_path
             end
         end
+    end
+
+    def complete
     end
 
     def add_listing

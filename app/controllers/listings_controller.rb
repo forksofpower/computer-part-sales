@@ -24,7 +24,6 @@ class ListingsController < ApplicationController
         @listing.user = current_user
         @listing.part = @part
 
-        binding.pry
         if @listing.valid?
             # flash[:success] = "Listing successfully created"
             @listing.save

@@ -23,7 +23,7 @@ class PartsController < ApplicationController
         @part.user_id = 1
         # set part owner to current_user
         # on new part, create new listing
-        if @part.validates?
+        if @part.validate
         #   flash[:success] = "Part successfully created"
           @part.save
 
