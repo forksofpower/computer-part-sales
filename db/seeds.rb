@@ -35,7 +35,8 @@ listing2 = Listing.create({
 })
 
 cart = Cart.new
-cart.parts << part1
+binding.pry
+cart.listings << listing1
 
-cart.user = user1
+cart.user = user2
 cart.save

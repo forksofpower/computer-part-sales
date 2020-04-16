@@ -18,6 +18,11 @@ class User < ApplicationRecord
         self.transactions.map { |transaction| transaction.id }
     end
 
+    def current_cart
+        last_cart = Cart.where(complete: false).find_by(user: self)
+        last_cart || Cart.create(user: self)
+    end
+
 end
 
 # parts = Part.select('*, CASE WHEN (listings.part_id IS NULL) THEN false ELSE true END as for_sale').joins('LEFT JOIN listings ON parts.id = listings.part_id').where('listings.part_id IS NULL')
