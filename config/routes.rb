@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   get 'authorized', to: "users#page_to_protect" # test for auth
 
   resources :transactions
-  resources :carts
+  resources :carts do
+    get '/listings/:listing_id/add', to: 'carts#add_listing', as: 'add_listing'
+    get '/listings/:listing_id/remove', to: 'carts#remove_listing', as: 'remove_listing'
+  end
 
-  get '/carts/:id/add-listing', to: 'carts#add_listing'
-  get '/cart/:id/remove-listing', to: 'carts#remove_listing'
+  # get '/carts/:id/add-listing/:', to: 'carts#add_listing', as: 'add_cart_listing'
+  # get '/cart/:id/remove-listing', to: 'carts#remove_listing', as: 'remove_cart_listing'
 
   resources :listings, except: [:new, :create]
   resources :parts, except: [:index] do
