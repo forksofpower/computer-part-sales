@@ -18,25 +18,24 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
 
-        session[:user_id] = @user.id
+        if @user.save
+            session[:user_id] = @user.id
+            flash[:success] = "Login Successful"
+            redirect_to root_path
+        else
+            flash[:error] = "Something went wrong"
 
-        redirect_to root_path
-        # if @user.save
-        #   flash[:success] = "User successfully created"
-        #   redirect_to @user
-        # else
-        #   flash[:error] = "Something went wrong"
-        #   render 'new'
-        # end
+            render 'new'
+        end
     end
 
     def update
         if @user.update_attributes(user_params)
-          flash[:success] = "User was successfully updated"
-          redirect_to @user
+            flash[:success] = "User was successfully updated"
+            redirect_to @user
         else
-          flash[:error] = "Something went wrong"
-          render 'edit'
+            flash[:error] = "Something went wrong"
+            render 'edit'
         end
     end
 
