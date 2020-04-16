@@ -14,4 +14,5 @@ class Cart < ApplicationRecord
     def cheapest_part
         self.parts.minimum(:price)
     end
+
 end
