@@ -8,5 +8,5 @@
 <% if !!@listing %>
     <h5><%= link_to "View Listing", listing_path(@listing) %></h5>
 <% else %>
-    <h5><%= link_to "Sell this item", new_listing_path(part_id: @part.id) %></h5>
+    <h5><%= link_to "Sell this item", new_part_listing_path(@part, @listing) %></h5>
 <% end %>

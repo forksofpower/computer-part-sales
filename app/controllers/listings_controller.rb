@@ -1,20 +1,18 @@
 class ListingsController < ApplicationController
-    before_action :find_listing, except: [:index, :new, :create]
+    before_action :find_listing, except: [:new, :index, :create]
+    before_action :find_part, only: [:show, :new, :create]
+
+    def new
+        @listing = Listing.new
+        # (part_id: params[:part_id])
+        # @part = Part.find(params[:part_id])
+    end
 
     def index
         @listings = Listing.all
     end
 
     def show
-    end
-
-    def new
-        if !!params[:part_id]
-            @listing = Listing.new(part_id: params[:part_id])
-            @part = Part.find(params[:part_id])
-        else
-            redirect_to listings_path
-        end
     end
 
     def edit
@@ -24,15 +22,18 @@ class ListingsController < ApplicationController
         # check for user allowed
         @listing = Listing.new(listing_params)
         @listing.user_id = 1
+        @listing.part = @part
 
-        if @listing.save
+        binding.pry
+        if @listing.valid?
             # flash[:success] = "Listing successfully created"
+            @listing.save
             redirect_to @listing
         else
             # flash[:error] = "Something went wrong"
             # provide the part for the listings form
-            @part = Part.find(params[:listing][:part_id])
-            render 'new', part_id: @listing.part_id
+            flash[:error] = @listing.errors.full_messages
+            redirect_to new_part_listing_path(@part)
         end
     end
 
@@ -58,10 +59,14 @@ class ListingsController < ApplicationController
 
     private
         def listing_params
-            params.require(:listing).permit(:condition, :price, :part_id)
+            params.require(:listing).permit(:condition, :price)
         end
 
         def find_listing
             @listing = Listing.find(params[:id])
+        end
+
+        def find_part
+            @part = (params[:part_id]) ? Part.find(params[:part_id]) : @listing.part
         end
 end

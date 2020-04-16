@@ -1,4 +1,4 @@
-<%= form_for @listing do |f| %>
+<%= form_for [@part, @listing] do |f| %>
     <%= f.label :condition, "Condition" %>
     <% Part.conditions.each do |q| %>
         <%= f.radio_button :condition, q %> <%= q.capitalize %>
@@ -7,6 +7,5 @@
     <%= f.label :price, "Price" %>
     <%= f.text_field :price %><br><br>
 
-    <%= f.hidden_field :part_id %>
     <%= f.submit %>
 <% end %>
