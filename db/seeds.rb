@@ -1,6 +1,6 @@
 # users
-user1 = User.create(name: "Patrick", email: "p@gmail.com")
-user2 = User.create(name: "Tsura", email: "t@gmail.com")
+user1 = User.create(name: "Patrick", email: "p@gmail.com", username: 'forksofpower', password_digest: nil)
+user2 = User.create(name: "Tsura", email: "t@gmail.com", username: 'tsurax', password_digest: nil)
 
 # parts
 part1 = Part.create({
