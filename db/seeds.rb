@@ -11,6 +11,28 @@ part1 = Part.create({
     category: 'graphics card',
     user: User.find(1)
 })
+part2 = Part.create({
+    name: 'GTX 550 TI',
+    manufacturer: 'Asus',
+    description: 'Fairly old and shitty graphics card',
+    model: 'engtx550 ti dc/di/1gd5',
+    category: 'graphics card',
+    user: User.find(2)
+})
+
+listing1 = Listing.create({
+    part: part1,
+    user: user1,
+    price: 750.00,
+    condition: 'new'
+})
+
+listing2 = Listing.create({
+    part: part2,
+    user: user2,
+    price: 75.00,
+    condition: 'fair'
+})
 
 cart = Cart.new
 cart.parts << part1
