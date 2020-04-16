@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, except: [:index, :new, :create]
+    before_action :find_user, except: [:index, :new, :create, :authorized]
 
     def index
         @users = User.all
@@ -17,22 +17,25 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+
         if @user.save
-          flash[:success] = "User successfully created"
-          redirect_to @user
+            session[:user_id] = @user.id
+            flash[:success] = "Login Successful"
+            redirect_to root_path
         else
-          flash[:error] = "Something went wrong"
-          render 'new'
+            flash[:error] = "Something went wrong"
+
+            render 'new'
         end
     end
 
     def update
         if @user.update_attributes(user_params)
-          flash[:success] = "User was successfully updated"
-          redirect_to @user
+            flash[:success] = "User was successfully updated"
+            redirect_to @user
         else
-          flash[:error] = "Something went wrong"
-          render 'edit'
+            flash[:error] = "Something went wrong"
+            render 'edit'
         end
     end
 
@@ -46,9 +49,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def authorized
+
+    end
+
     private
         def user_params
-            params.require(:user).permit(:name, :email)
+            params.require(:user).permit(:name, :email, :username, :password)
         end
 
         def find_user
