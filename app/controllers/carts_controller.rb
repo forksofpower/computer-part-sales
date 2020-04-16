@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
     before_action :find_cart, except: [:index, :new, :create]
+    before_action :find_listing, only: [:add_listing, :remove_listing]
+    skip_before_action :authorized, only: [:add_listing, :remove_listing]
 
     def index
         @carts = Cart.all
@@ -8,59 +10,36 @@ class CartsController < ApplicationController
     def show
     end
 
-    # def new
-    #     @cart = Cart.new
-    # end
-
     def edit
     end
 
-    # def create
-    #     @cart = Cart.new(cart_params)
-    #     if @cart.save
-    #       flash[:success] = "Cart successfully created"
-    #       redirect_to @cart
-    #     else
-    #       flash[:error] = "Something went wrong"
-    #       render 'new'
-    #     end
-    # end
-
-    # def update
-    #     if @cart.update_attributes(cart_params)
-    #       flash[:success] = "Cart was successfully updated"
-    #       redirect_to @cart
-    #     else
-    #       flash[:error] = "Something went wrong"
-    #       render 'edit'
-    #     end
-    # end
-
-    # def destroy
-    #     if @cart.destroy
-    #         flash[:success] = "Cart was successfully deleted"
-    #         redirect_to carts_path
-    #     else
-    #         flash[:error] = "Something went wrong"
-    #         redirect_to carts_path
-    #     end
-    # end
-
     def add_listing
-        # shuffle in the new listing id and redirect to the referring page
         # need to prevent duplicates
-        @cart.listing_ids << params[:listing_id].to_i
-        # @cart.listings << Listings.find_by(params[:listing_id])
-        @cart.save
-        # if 
-        #     redirect_to cart_path
-        # else
-        #     binding.pry
-        # end
+        if !@cart.listings.include?(@listing)
+            @cart.listings << Listing.find(params[:listing_id])
+        
+            if @cart.save
+                # binding.pry
+                redirect_to listing_path(@listing)
+            else
+                # 
+            end
+        else
+            redirect_to listing_path(@listing)
+        end
     end
 
     def remove_listing
-
+        if @cart.listings.include?(@listing)
+            @cart.listings -= [@listing]
+            if @cart.save
+                redirect_to listing_path(@listing)
+            else
+                # 
+            end
+        else
+            redirect_to listing_path(@listing)
+        end
     end
 
     private
@@ -73,6 +52,10 @@ class CartsController < ApplicationController
         end
 
         def find_cart
-            @cart = Cart.find(params[:id])
+            if params[:cart_id]
+                @cart = Cart.find(params[:cart_id])    
+            else
+                @cart = Cart.find(params[:id])
+            end
         end
 end
