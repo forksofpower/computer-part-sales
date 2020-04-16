@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_213013) do
     t.integer "seller_id"
     t.integer "cart_id"
     t.integer "part_id"
+    t.float "price"
+    t.string "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    before_action :find_cart, except: [:index, :new, :create, :show]
+    before_action :find_cart, except: [:index, :new, :create, :show, :checkout]
     before_action :find_listing, only: [:add_listing, :remove_listing]
     skip_before_action :authorized, only: [:add_listing, :remove_listing]
 
@@ -13,7 +13,39 @@ class CartsController < ApplicationController
         @cart = current_user.current_cart
     end
 
-    def edit
+    def checkout
+        # set cart.complete = true
+        # iterate through listings
+        #   set listing.available = false
+        #   create transaction for listing
+        @cart = current_user.current_cart
+
+        if !@cart.listings.empty?
+            @cart.complete = true
+
+            @cart.listings.each do |listing|
+                # create transaction
+                # buyer, seller, cart, part
+                transaction = Transaction.new({
+                    cart: @cart,
+                    part: listing.part,
+                    buyer: current_user,
+                    seller: listing.user,
+                    price: listing.price, 
+                    condition: listing.condition
+                })
+
+                # transfer part ownership
+                listing.part.user = current_user
+                listing.part.save
+                # delete listing
+                listing.delete
+
+                transaction.save
+                # binding.pry
+                
+            end
+        end
     end
 
     def add_listing

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
   get '/cart', to: 'carts#show', as: 'current_user_cart'
 
+  post '/checkout', to: 'carts#checkout', as: 'checkout'
+
   # get '/carts/:id/add-listing/:', to: 'carts#add_listing', as: 'add_cart_listing'
   # get '/cart/:id/remove-listing', to: 'carts#remove_listing', as: 'remove_cart_listing'
 
