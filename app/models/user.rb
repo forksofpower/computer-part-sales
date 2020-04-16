@@ -17,4 +17,7 @@ class User < ApplicationRecord
     def transaction_ids
         self.transactions.map { |transaction| transaction.id }
     end
+
 end
+
+# parts = Part.select('*, CASE WHEN (listings.part_id IS NULL) THEN false ELSE true END as for_sale').joins('LEFT JOIN listings ON parts.id = listings.part_id').where('listings.part_id IS NULL')

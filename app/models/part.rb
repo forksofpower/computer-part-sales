@@ -11,8 +11,6 @@ class Part < ApplicationRecord
         self.sellers.last
     end
 
-    
-
     def self.conditions
         @@conditions
     end

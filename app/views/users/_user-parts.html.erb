@@ -1,0 +1,5 @@
+<ul>
+    <% @user.parts.each do |part| %>
+        <li><%= link_to part.name, part_path(part) %></li>
+    <% end %>
+</ul>

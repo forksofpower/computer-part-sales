@@ -7,13 +7,8 @@
     <%= f.text_area :description %><br><br>
     <%= f.label :model, "Model" %>
     <%= f.text_field :model %><br><br>
-    <%= f.label :condition, "Condition" %>
-    <% Part.qualities.each do |q| %>
-        <%= f.radio_button :condition, q %> <%= q.capitalize %>
-    <% end %><br><br>
     <%= f.label :category, "Category" %>
     <%= f.text_field :category %><br><br>
-    <%= f.label :price, "Price" %>
-    <%= f.text_field :price %><br><br>
+
     <%= f.submit %>
 <% end %>

@@ -1,11 +1,13 @@
 class PartsController < ApplicationController
     before_action :find_part, except: [:index, :new, :create]
+    before_action :find_part_listing, only: [:index, :edit]
 
     def index
         @parts = Part.all
     end
 
     def show
+        @listing = Listing.find_by(part_id: @part.id)
     end
 
     def new
@@ -17,8 +19,13 @@ class PartsController < ApplicationController
 
     def create
         @part = Part.new(part_params)
-        if @part.save
-          flash[:success] = "Part successfully created"
+        @part.user_id = 1
+        # set part owner to current_user
+        # on new part, create new listing
+        if @part.validates?
+        #   flash[:success] = "Part successfully created"
+          @part.save
+
           redirect_to @part
         else
           flash[:error] = "Something went wrong"
@@ -49,6 +56,10 @@ class PartsController < ApplicationController
     private
         def part_params
             params.require(:part).permit(:name, :manufacturer, :description, :model, :condition, :category, :price, :available)
+        end
+
+        def find_part_listing
+            @listing = Listing.find_by(part_id: params[:id])
         end
 
         def find_part

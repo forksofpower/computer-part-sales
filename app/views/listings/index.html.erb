@@ -1,0 +1,6 @@
+<h3>Listings</h3>
+<ul>
+    <% @listings.each do |listing| %>
+        <li><%= link_to listing.part.name, listing_path(listing) %> - $<%= listing.price %></li>
+    <% end %>
+</ul>

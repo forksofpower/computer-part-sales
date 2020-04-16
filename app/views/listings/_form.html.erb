@@ -1,0 +1,12 @@
+<%= form_for @listing do |f| %>
+    <%= f.label :condition, "Condition" %>
+    <% Part.conditions.each do |q| %>
+        <%= f.radio_button :condition, q %> <%= q.capitalize %>
+    <% end %><br><br>
+
+    <%= f.label :price, "Price" %>
+    <%= f.text_field :price %><br><br>
+
+    <%= f.hidden_field :part_id %>
+    <%= f.submit %>
+<% end %>
