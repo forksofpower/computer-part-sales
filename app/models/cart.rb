@@ -1,8 +1,9 @@
 class Cart < ApplicationRecord
     belongs_to :user
     
-    has_many :cart_parts
-    has_many :parts, through: :cart_parts
+    has_many :cart_listings
+    has_many :listings, through: :cart_listings
+    has_many :parts, through: :listings
 
     has_many :transactions
 
