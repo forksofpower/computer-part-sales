@@ -1,7 +1,3 @@
-# users
-user1 = User.create(name: "Patrick", email: "p@gmail.com", username: 'forksofpower', password_digest: nil)
-user2 = User.create(name: "Tsura", email: "t@gmail.com", username: 'tsurax', password_digest: nil)
-
 # parts
 part1 = Part.create({
     name: 'Nvidia Geforce 2080 TI',
@@ -22,21 +18,20 @@ part2 = Part.create({
 
 listing1 = Listing.create({
     part: part1,
-    user: user1,
+    user: User.find(1),
     price: 750.00,
     condition: 'new'
 })
 
 listing2 = Listing.create({
     part: part2,
-    user: user2,
+    user: User.find(2),
     price: 75.00,
     condition: 'fair'
 })
 
-cart = Cart.new
-binding.pry
-cart.listings << listing1
 
-cart.user = user2
+cart = User.find(1).current_cart
+# binding.pry
+cart.listings << listing1
 cart.save

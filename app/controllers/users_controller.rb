@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, except: [:index, :new, :create]
+    before_action :find_user, except: [:index, :new, :create, :authorized]
 
     def index
         @users = User.all
@@ -47,6 +47,10 @@ class UsersController < ApplicationController
             flash[:error] = "Something went wrong"
             redirect_to users_path
         end
+    end
+
+    def authorized
+
     end
 
     private

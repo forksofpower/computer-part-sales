@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete "/signout", to: "sessions#destroy"
+  get 'authorized', to: "users#authorized" # test for auth
 
   resources :transactions
   resources :carts
+
+  get '/carts/:id/add-listing', to: 'carts#add_listing'
+  get '/cart/:id/remove-listing', to: 'carts#remove_listing'
 
   resources :listings, except: [:new, :create]
   resources :parts do
