@@ -1,11 +1,18 @@
 class UsersController < ApplicationController
-    before_action :find_user, except: [:index, :new, :create, :authorized]
+    before_action :find_user, except: [:index, :new, :create, :show_me]
+    skip_before_action :authorized, only: [:new, :create]
 
     def index
         @users = User.all
     end
 
     def show
+    end
+
+    def show_me
+        @user = current_user
+
+        render :show
     end
 
     def new
@@ -16,6 +23,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        @existing_user = User.find_by(username: params[:username])
         @user = User.new(user_params)
 
         if @user.save
@@ -49,8 +57,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def authorized
-
+    def page_to_protect
     end
 
     private

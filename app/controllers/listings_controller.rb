@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
     before_action :find_listing, except: [:new, :index, :create]
     before_action :find_part, only: [:show, :new, :create]
+    skip_before_action :authorized, only: [:index, :show]
+
 
     def new
         @listing = Listing.new
-        # (part_id: params[:part_id])
-        # @part = Part.find(params[:part_id])
     end
 
     def index

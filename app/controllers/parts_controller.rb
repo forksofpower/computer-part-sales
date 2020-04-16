@@ -1,6 +1,7 @@
 class PartsController < ApplicationController
     before_action :find_part, except: [:index, :new, :create]
     before_action :find_part_listing, only: [:index, :edit]
+    # skip_before_action :authorized, only: [:new, :create]
 
     def index
         @parts = Part.all
