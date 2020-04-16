@@ -21,10 +21,9 @@ class ListingsController < ApplicationController
     def create
         # check for user allowed
         @listing = Listing.new(listing_params)
-        @listing.user_id = 1
+        @listing.user = current_user
         @listing.part = @part
 
-        binding.pry
         if @listing.valid?
             # flash[:success] = "Listing successfully created"
             @listing.save

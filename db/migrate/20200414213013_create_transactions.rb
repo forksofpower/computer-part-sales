@@ -5,6 +5,8 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.integer :seller_id
       t.integer :cart_id
       t.integer :part_id
+      t.float :price
+      t.string :condition
 
       t.timestamps
     end
