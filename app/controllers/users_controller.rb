@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         if @user.save
             session[:user_id] = @user.id
             flash[:success] = "Login Successful"
-            redirect_to root_path
+            redirect_to me_path
         else
             flash[:error] = "Something went wrong"
 

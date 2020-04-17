@@ -1,3 +1,9 @@
+<header class="jumbotron jumbotron-fluid jumbotron-header bg-dark">
+    <div class="container">
+        <h1 class="display-5 text-light">Your Shopping Cart</h1>
+        <!-- <p class="lead text-light">Add parts you own so you can sell them!</p> -->
+    </div>
+</header>
 <div class="page">
     <div class="container">
         <h1>Your Shopping Cart</h1>
@@ -14,8 +20,10 @@
             <h4>Total Price: $<%= @cart.listings.sum(:price) %></h4>
             <br><br>
 
+            <span>
             <%= button_to 'Continue Shopping', listings_path, method: :get, class: "btn btn-outline-success" %>
             <%= button_to 'Checkout', checkout_path, method: :post, class: "btn btn-outline-primary" %>
+            </span>
         <% end %>
     </div>
 </div>
