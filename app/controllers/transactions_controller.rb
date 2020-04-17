@@ -16,7 +16,7 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        @transaction = Transaction.new(transaction_para])
+        @transaction = Transaction.new(transaction_params])
         if @transaction.save
         #   flash[:success] = "Transaction successfully created"
           redirect_to @transaction
