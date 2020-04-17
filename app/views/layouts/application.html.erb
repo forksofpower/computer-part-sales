@@ -29,12 +29,12 @@
             <%= button_to 'Sign Out', signout_path, method: :delete, class: "btn btn-outline-danger" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to 'Login', login_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_path, class: "btn btn-outline-primary" %>
-          </li>
+            <li class="nav-item pr-4">
+                <%= link_to 'Login', login_path, class: "nav-link font-weight-bold" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Sign Up', new_user_path, class: "btn btn-outline-primary" %>
+            </li>
         <% end %>
         </ul>
     </nav>
