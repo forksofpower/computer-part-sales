@@ -1,11 +1,16 @@
 <%= form_for [@part, @listing] do |f| %>
-    <%= f.label :condition, "Condition" %>
-    <% Part.conditions.each do |q| %>
+    <div class="form-group">
+        <%= f.label :condition, "Condition" %>
+        <% Part.conditions.each do |q| %>
         <%= f.radio_button :condition, q %> <%= q.capitalize %>
-    <% end %><br><br>
-
-    <%= f.label :price, "Price" %>
-    <%= f.text_field :price %><br><br>
-
+        <% end %>
+    </div>
+    <div class="input-group col-sm-4">
+        <%= f.label :price, "Price", for: "price" %>
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon"><i class="fas fa-dollar-sign"></i></div>
+        </div>
+        <%= f.text_field :price, name: "price", class: "form-control"%>
+    </div>
     <%= f.submit %>
 <% end %>

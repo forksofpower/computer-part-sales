@@ -10,14 +10,6 @@
         <h4>Your Parts</h4>
         <%= render 'user-parts' %>
         <h4>Your Transactions</h4>
-        <ul>
-        <% @user.transactions.each do |t| %>
-            <% if t.buyer == @user %>
-                <li>You bought a <i><%= link_to t.part.name, part_path(t.part) %></i> from @<%= t.seller.username %> for $<%= t.price %></li>
-            <% elsif t.seller = @user %>
-                <li>You sold a <i><%= link_to t.part.name, part_path(t.part) %></i> from @<%= t.buyer.username %> to $<%= t.price %></li>
-            <% end %>
-        <% end %>
-        </ul>
+        <%= render 'user-transactions' %>
     </section>
 </div>

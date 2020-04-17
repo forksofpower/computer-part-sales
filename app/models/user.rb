@@ -24,4 +24,8 @@ class User < ApplicationRecord
         last_cart || Cart.create(user: self)
     end
 
+    def is_owner?(object)
+        (!object.nil? && object.user === self) ? true : false
+    end
+
 end

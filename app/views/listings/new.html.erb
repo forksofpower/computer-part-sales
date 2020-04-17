@@ -1,8 +1,12 @@
-<h3>Sell your <%= @part.name %></h3>
-<%= render 'form' %>
+<section class="page">
+    <div class="container">
+        <h3>Sell your <%= @part.name %></h3>
+        <%= render 'form' %>
 
-<% if !!flash[:error] %>
-    <% flash[:error].each do |error| %>
-        <p><%= error %></p>
-    <% end %>
-<% end %>
+        <% if !!flash[:error] %>
+            <% flash[:error].each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        <% end %>
+    </div>
+</section>
