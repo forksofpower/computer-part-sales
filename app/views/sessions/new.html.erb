@@ -3,19 +3,19 @@
       <div class="col-sm-4">
          <div class="card">
             <article class="card-body">
-               <a href="" class="float-right btn btn-outline-primary">Sign up</a>
+               <%= link_to 'Sign up', new_user_path, class: "float-right btn btn-outline-primary" %>
                <h4 class="card-title mb-4 mt-1">Sign in</h4>
                <p>
                   <a href="" class="btn btn-block btn-outline-dark"> <i class="fab fa-github"></i>   Login via Github</a>
                   <!-- <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login via facebook</a> -->
                </p>
-               <hr>
+               <hr data-content="OR" class="hr-text">
                <form>
                 <div class="form-group">
-                    <input name="" class="form-control" placeholder="Email or login" type="email">
+                    <input name="" class="form-control" placeholder="username" type="email">
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <input class="form-control" placeholder="******" type="password">
+                    <input class="form-control" placeholder="password" type="password">
                 </div> <!-- form-group// -->                                      
                 <div class="row">
                     <div class="col-md-6">
