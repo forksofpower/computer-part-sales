@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
     def show_me
         @user = current_user
-        binding.pry
         render :show
     end
 
