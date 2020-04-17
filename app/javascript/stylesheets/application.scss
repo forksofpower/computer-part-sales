@@ -16,7 +16,9 @@
 .page {
     padding-top: 20px;
 }
-
+.card {
+    margin-bottom: 20px;
+}
 .dots {
     position: absolute;
     z-index: 2;
@@ -43,6 +45,10 @@
     .nav-link {
         padding-bottom: 0;
     }
+}
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
 }
 #cart-icon .cart-count[data-count]:after{
     position:absolute;

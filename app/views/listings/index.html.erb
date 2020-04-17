@@ -8,11 +8,12 @@
 <div class="page">
     <div class="container">
         <div class="row">
-            <div class="card-deck">
             <% @listings.each do |listing| %>
-                <div class="card sm-col-6">
+                <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" src="<%= "https://picsum.photos/seed/#{rand(1..5000)}/400/400" %>">
                     <div class="card-body">
-                        <h5 class="card-title"><%= listing.part.name %></h5>
+                        <h5 class="card-title"><%= link_to listing.part.name, listing_path(listing) %></h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <% if logged_in? %>
                         <% if current_user.current_cart.listings.include?(listing) %>
@@ -23,8 +24,8 @@
                         <% end %>
                     </div>
                 </div>
+                </div>
             <% end %>
-            </div>
             </div>
         </div>
     </div>

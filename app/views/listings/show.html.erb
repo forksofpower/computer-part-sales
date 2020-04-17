@@ -2,11 +2,11 @@
     <%= image_tag "dots.png", class: "dots" %>
     <div class="container">
         <h1 class="display-5 text-light"><%= @listing.part.name %></h1>
-        <p class="lead text-light"><%= @listing.part.manufacturer %></p>
     </div>
 </header>
 <section class="container">
-    <h2>For Sale: <%= @listing.part.name %></h2>
+    <h3><%= @listing.part.manufacturer %> // <%= @listing.part.category %></h3> 
+    <p><%= @listing.part.description %></p>
     <p>Condition: <%= @listing.condition.capitalize %></p>
     <p>$<%= @listing.price %></p>
 
