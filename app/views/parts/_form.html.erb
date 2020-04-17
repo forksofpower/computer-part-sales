@@ -1,14 +1,24 @@
 <%= form_for @part do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %><br><br>
-    <%= f.label :manufacturer, "Manufacturer" %>
-    <%= f.text_field :manufacturer %><br><br>
-    <%= f.label :description, "Description" %>
-    <%= f.text_area :description %><br><br>
-    <%= f.label :model, "Model" %>
-    <%= f.text_field :model %><br><br>
-    <%= f.label :category, "Category" %>
-    <%= f.text_field :category %><br><br>
+    <div class="form-group">
+        <%= f.label :name, "Part Name" %>
+        <%= f.text_field :name, class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= f.label :manufacturer, "Manufacturer" %>
+        <%= f.text_field :manufacturer, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :model, "Model" %>
+        <%= f.text_field :model, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :category, "Category" %>
+        <%= f.text_field :category, class: "form-control" %>
+    </div>
 
-    <%= f.submit %>
+    <%= f.submit "Create Part", class: "btn btn-primary" %>
 <% end %>

@@ -42,10 +42,9 @@ class CartsController < ApplicationController
                 listing.delete
 
                 transaction.save
-                # binding.pry
-                
-                redirect_to checkout_complete_path
             end
+
+            redirect_to checkout_complete_path
         end
     end
 

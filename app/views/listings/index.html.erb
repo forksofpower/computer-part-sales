@@ -7,22 +7,25 @@
 </header>
 <div class="page">
     <div class="container">
-        <div class="card-deck">
-        <% @listings.each do |listing| %>
-            <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><%= listing.part.name %></h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <% if logged_in? %>
-                <% if current_user.current_cart.listings.include?(listing) %>
-                    <%= button_to 'Remove from Cart', cart_remove_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-danger' %>
-                <% else %>
-                    <%= button_to 'Add to Cart', cart_add_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-success' %>
-                <% end %>
-                <% end %>
+        <div class="row">
+            <div class="card-deck">
+            <% @listings.each do |listing| %>
+                <div class="card sm-col-6">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= listing.part.name %></h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <% if logged_in? %>
+                        <% if current_user.current_cart.listings.include?(listing) %>
+                            <%= button_to 'Remove from Cart', cart_remove_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-danger' %>
+                        <% else %>
+                            <%= button_to 'Add to Cart', cart_add_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-success' %>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
             </div>
             </div>
-        <% end %>
         </div>
     </div>
 </div>

@@ -6,11 +6,11 @@
         <% end %>
     </div>
     <div class="input-group col-sm-4">
-        <%= f.label :price, "Price", for: "price" %>
+        <%= f.label :price, "Price" %>
         <div class="input-group-prepend">
             <div class="input-group-text" id="btnGroupAddon"><i class="fas fa-dollar-sign"></i></div>
         </div>
-        <%= f.text_field :price, name: "price", class: "form-control"%>
+        <%= f.text_field :price, class: "form-control"%>
     </div>
     <%= f.submit %>
 <% end %>

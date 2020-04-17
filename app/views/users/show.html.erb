@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page user-page">
     <section class="container">
         <h1><%= @user.name %></h1>
         <h3><%= @user.email %></h3>
@@ -7,7 +7,7 @@
 
         <h4>Current Listings</h4>
         <%= render 'user-listings' %>
-        <h4>Your Parts</h4>
+        <h4 class="user-page-section-heading mr-2">Your Parts</h4><%= link_to "Add Part", new_part_path, class: "btn btn-sm btn-outline-dark" %>
         <%= render 'user-parts' %>
         <h4>Your Transactions</h4>
         <%= render 'user-transactions' %>

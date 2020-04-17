@@ -1,17 +1,21 @@
-<h1>Your Shopping Cart</h1>
+<div class="page">
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
 
-<% if @cart.listings.empty? %>
-    <h3>Your cart is empty. Go find some <%= link_to 'parts', listings_path %> to add!</h3>
-<% else %>
-    <% @cart.listings.each do |listing| %>
-        <li><%= link_to listing.part.name, listing_path(listing) %> - $<%= listing.price %>
-            <small><%= link_to 'remove', cart_remove_listing_path(@cart, listing) %></small>
-        </li>
-    <% end %>
-    <br>
-    <h4>Total Price: $<%= @cart.listings.sum(:price) %></h4>
-    <br><br>
+        <% if @cart.listings.empty? %>
+            <h3>Your cart is empty. Go find some <%= link_to 'parts', listings_path %> to add!</h3>
+        <% else %>
+            <% @cart.listings.each do |listing| %>
+                <li><%= link_to listing.part.name, listing_path(listing) %> - $<%= listing.price %>
+                    <small><%= link_to 'remove', cart_remove_listing_path(@cart, listing) %></small>
+                </li>
+            <% end %>
+            <br>
+            <h4>Total Price: $<%= @cart.listings.sum(:price) %></h4>
+            <br><br>
 
-    <%= button_to 'Continue Shopping', listings_path, method: :get, class: "btn btn-outline-success" %>
-    <%= button_to 'Checkout', checkout_path, method: :post, class: "btn btn-outline-primary" %>
-<% end %>
+            <%= button_to 'Continue Shopping', listings_path, method: :get, class: "btn btn-outline-success" %>
+            <%= button_to 'Checkout', checkout_path, method: :post, class: "btn btn-outline-primary" %>
+        <% end %>
+    </div>
+</div>

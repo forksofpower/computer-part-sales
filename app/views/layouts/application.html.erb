@@ -14,7 +14,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <%= link_to 'Home', root_path, class: "nav-link" %>
           </li>
@@ -22,11 +22,27 @@
             <%= link_to 'Listings', listings_path, class: "nav-link" %>
           </li>
         </ul>
-
         <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item">
-            <%= button_to 'Sign Out', signout_path, method: :delete, class: "btn btn-outline-danger" %>
+          <li class="nav-item cart">
+            <%= link_to current_user_cart_path, class: "nav-link" do %>
+              <div id="cart-icon">
+                <span class="cart-count fa-stack fa-lg has-badge" data-count="<%= current_user.current_cart.listings.count %>">
+                  <i class="fas fa-shopping-cart fa-stack-1x xfa-inverse" data-count="<%= current_user.current_cart.listings.count %>"></i>
+                </span>
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@<%= current_user.username %></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <%= link_to "Profile", me_path, class: "dropdown-item" %>
+                  <%= link_to "Listings", parts_path, class: "dropdown-item" %>
+                  <%= link_to "Parts", listings_path, class: "dropdown-item" %>
+                  <%= link_to "Transactions", transactions_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Sign Out', signout_path, method: :delete, class: "text-danger dropdown-item" %>
+              </div>
           </li>
         <% else %>
             <li class="nav-item pr-3">
