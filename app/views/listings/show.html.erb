@@ -1,9 +1,13 @@
-<h2>For Sale: <%= @listing.part.name %></h2>
-<p>Condition: <%= @listing.condition.capitalize %></p>
-<p>$<%= @listing.price %></p>
+<div class="page">
+    <section class="container">
+        <h2>For Sale: <%= @listing.part.name %></h2>
+        <p>Condition: <%= @listing.condition.capitalize %></p>
+        <p>$<%= @listing.price %></p>
 
-<% if current_user.current_cart.listings.include?(@listing) %>
-    <%= button_to 'Remove from Cart', cart_remove_listing_path(current_user.current_cart,@listing), method: :get, class: 'btn btn-outline-danger' %>
-<% else %>
-    <%= button_to 'Add to Cart', cart_add_listing_path(current_user.current_cart,@listing), method: :get, class: 'btn btn-outline-success' %>
-<% end %>
+        <% if current_user.current_cart.listings.include?(@listing) %>
+            <%= button_to 'Remove from Cart', cart_remove_listing_path(current_user.current_cart,@listing), method: :get, class: 'btn btn-outline-danger' %>
+        <% else %>
+            <%= button_to 'Add to Cart', cart_add_listing_path(current_user.current_cart,@listing), method: :get, class: 'btn btn-outline-success' %>
+        <% end %>
+    </section>
+</div>

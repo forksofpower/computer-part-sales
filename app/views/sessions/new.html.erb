@@ -5,11 +5,6 @@
             <article class="card-body">
                <%= link_to 'Sign up', new_user_path, class: "float-right btn btn-outline-primary" %>
                <h4 class="card-title mb-4 mt-1">Sign in</h4>
-               <p>
-                  <a href="" class="btn btn-block btn-outline-dark"> <i class="fab fa-github"></i>   Login via Github</a>
-                  <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google"></i>   Login via Google</a>
-               </p>
-               <hr data-content="OR" class="hr-text">
                <%= form_tag "/login" do %>
                   <div class="form-group">
                      <%= text_field_tag :username, nil, placeholder: "username", class: "form-control" %>
@@ -25,6 +20,11 @@
                      </div>                      
                   </div>
                <% end %>
+               <hr data-content="OR" class="hr-text">
+               <p>
+                  <a href="" class="btn btn-block btn-outline-dark"> <i class="fab fa-github"></i>   Login via Github</a>
+                  <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google"></i>   Login via Google</a>
+               </p>
             </article>
          </div>
          <!-- <div class="card">

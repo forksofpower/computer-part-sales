@@ -1,6 +1,28 @@
-<h3>Listings</h3>
-<ul>
-    <% @listings.each do |listing| %>
-        <li><%= link_to listing.part.name, listing_path(listing) %> - $<%= listing.price %></li>
-    <% end %>
-</ul>
+<header class="jumbotron jumbotron-fluid jumbotron-header bg-dark">
+    <%= image_tag "dots.png", class: "dots" %>
+    <div class="container">
+        <h1 class="display-5 text-light">Listings</h1>
+        <p class="lead text-light">Browse computer parts for sale</p>
+    </div>
+</header>
+<div class="page">
+    <div class="container">
+        <div class="card-deck">
+        <% @listings.each do |listing| %>
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%= listing.part.name %></h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <% if logged_in? %>
+                <% if current_user.current_cart.listings.include?(listing) %>
+                    <%= button_to 'Remove from Cart', cart_remove_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-danger' %>
+                <% else %>
+                    <%= button_to 'Add to Cart', cart_add_listing_path(current_user.current_cart,listing), method: :get, class: 'btn btn-outline-success' %>
+                <% end %>
+                <% end %>
+            </div>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>

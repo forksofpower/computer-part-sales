@@ -1,10 +1,27 @@
+@import "./themes/lumen/variables";
 @import "bootstrap";
-@import '@fortawesome/fontawesome-free';
+@import "./themes/lumen/bootswatch";
 
 .login-page,
-.signup-page {
+.signup-page,
+.page {
     padding-top: 40px;
 }
+
+.dots {
+    position: absolute;
+    z-index: 2;
+    opacity: 1.5;
+    max-width: 100%;
+    border-radius: .2857rem;
+}
+.jumbotron-header {
+    border: 0;
+    height: 120px;
+    padding-top: 20px;
+    z-index: 1;
+}
+
 .glostick {
     // box-sizing: border-box;
     // background: white;
